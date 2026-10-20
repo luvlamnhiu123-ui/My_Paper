@@ -1,21 +1,21 @@
 # Luu Gia Huy
 
-Trang giới thiệu các nghiên cứu của tôi, bao gồm công bố và phần đóng góp cụ thể trong từng nghiên cứu. Ngoài ra, trang còn kể lại hành trình và kinh nghiệm nghiên cứu của tôi.
+A portfolio presenting my research, including my publications and my specific contributions to each study. It also traces the journey and experience I gained along the way.
 
-**Trang web:** https://luvlamnhiu123-ui.github.io/My_Paper/
+**Website:** https://luvlamnhiu123-ui.github.io/My_Paper/
 
-## Lĩnh vực quan tâm
+## Research Interests
 
-- Xử lý ngôn ngữ tự nhiên (NLP)
-- Phân tích cảm xúc và ABSA
-- Đánh giá và diễn giải mô hình ngôn ngữ lớn (LLM)
+- Natural Language Processing (NLP)
+- Sentiment Analysis and Aspect-Based Sentiment Analysis (ABSA)
+- Evaluation and interpretability of Large Language Models (LLMs)
 
-## Nội dung
+## Contents
 
-- Các nghiên cứu và phần đóng góp cá nhân
-- Hành trình nghiên cứu
+- Research projects and my individual contributions
+- Research journey
 
-## Liên hệ
+## Contact
 
 - Email: 23520618@gm.uit.edu.vn
 - Google Scholar: https://scholar.google.com/citations?user=lb0TLkYAAAAJ&hl=en
