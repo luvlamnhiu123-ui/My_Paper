@@ -2,10 +2,608 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Research Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luu Gia Huy – Research Portfolio</title>
+  <meta name="description" content="Research portfolio of Luu Gia Huy: publications on Vietnamese implicit sentiment analysis and LLM evaluation, with my specific contributions to each study.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f8f9fc;
+      --ink: #1c2438;
+      --muted: #566079;
+      --rule: #d9deea;
+      --surface: #b4540a;
+      --surface-bg: #fbeedd;
+      --meaning: #1d5a8a;
+      --meaning-bg: #e1edf7;
+      --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 1.0625rem; line-height: 1.7; }
+    main, header, footer { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+    a { color: var(--meaning); text-underline-offset: 0.18em; }
+    a:hover { color: var(--ink); }
+    :focus-visible { outline: 3px solid var(--meaning); outline-offset: 3px; border-radius: 2px; }
+    h1, h2, h3, h4 { font-family: var(--sans); line-height: 1.25; margin: 0; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    header { padding-top: 3.5rem; }
+    h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; }
+    .also { font-family: var(--sans); font-size: 0.95rem; color: var(--muted); margin: 0.35rem 0 0; }
+    .intro { margin: 1.5rem 0 0; max-width: 38rem; }
+    .affil { font-family: var(--sans); font-size: 0.95rem; color: var(--muted); margin: 0.75rem 0 0; }
+
+    .toc { margin-top: 2.5rem; }
+    .toc h2 { font-size: 1.1rem; font-weight: 600; }
+    .toc ol { list-style: none; margin: 0.75rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
+    .toc a { display: grid; grid-template-columns: 1fr auto; column-gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
+    .toc .t { font-family: var(--sans); font-weight: 600; }
+    .toc .q { grid-column: 1; font-size: 0.95rem; color: var(--muted); line-height: 1.5; }
+    .toc .n { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+    .toc a:hover .t { color: var(--meaning); }
+
+    section.thread { margin-top: 5rem; scroll-margin-top: 1.5rem; }
+    section.thread h2 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.01em; }
+    .question { font-family: var(--sans); font-size: 1.15rem; font-weight: 500; color: var(--meaning); margin: 0.6rem 0 0; line-height: 1.45; }
+    .story { margin: 1rem 0 0; max-width: 38rem; }
+
+    .reading { margin: 1.75rem 0 0; padding: 1.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .example + .example { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+    .lang { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); margin: 0 0 0.35rem; }
+    .sentence { font-family: var(--sans); font-size: 1.35rem; font-weight: 500; line-height: 1.5; margin: 0; }
+    .sentence .s { background: var(--surface-bg); box-shadow: 0 2px 0 var(--surface); }
+    .sentence .m { background: var(--meaning-bg); box-shadow: 0 2px 0 var(--meaning); }
+    .readings { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; font-size: 0.96rem; line-height: 1.55; }
+    .readings strong { display: block; font-family: var(--sans); font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .readings .l-s strong { color: var(--surface); }
+    .readings .l-m strong { color: var(--meaning); }
+    .caption { font-size: 0.9rem; color: var(--muted); margin: 1.25rem 0 0; }
+
+    ol.steps { list-style: none; counter-reset: step; margin: 2.5rem 0 0; padding: 0; }
+    ol.steps > li { counter-increment: step; position: relative; padding: 0 0 2.75rem 3rem; }
+    ol.steps > li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; display: grid; place-items: center; border: 1.5px solid var(--meaning); border-radius: 50%; background: var(--paper); color: var(--meaning); font-family: var(--sans); font-size: 0.88rem; font-weight: 600; }
+    ol.steps > li::after { content: ""; position: absolute; left: 1rem; top: 2.4rem; bottom: 0.4rem; width: 1.5px; background: var(--rule); }
+    ol.steps > li:last-child { padding-bottom: 0; }
+    ol.steps > li:last-child::after { display: none; }
+
+    .paper h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.4; }
+    .paper h3 a { color: var(--ink); text-decoration-color: var(--rule); text-decoration-thickness: 2px; }
+    .paper h3 a:hover { text-decoration-color: var(--meaning); }
+    .byline { font-family: var(--sans); font-size: 0.92rem; color: var(--muted); margin: 0.4rem 0 0; }
+    .byline b { color: var(--ink); font-weight: 600; }
+    .links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.9rem 0 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 0.9rem; }
+    .links a { display: inline-block; padding: 0.3rem 0.8rem; border: 1px solid var(--meaning); border-radius: 999px; text-decoration: none; font-weight: 500; }
+    .links a:hover { background: var(--meaning); color: #fff; }
+
+    .summary { margin: 1.1rem 0 0; display: grid; gap: 0.7rem; }
+    .summary > div { display: grid; grid-template-columns: 4.6rem 1fr; column-gap: 1rem; }
+    .summary dt { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--muted); padding-top: 0.2rem; }
+    .summary dd { margin: 0; }
+
+    details { margin-top: 1.25rem; border-top: 1px solid var(--rule); padding-top: 0.8rem; }
+    summary { font-family: var(--sans); font-size: 0.92rem; font-weight: 500; cursor: pointer; color: var(--meaning); }
+    details p { margin: 1rem 0 0; }
+    details h4 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.25rem; }
+    details ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+    details li { margin-top: 0.4rem; }
+    .note { font-size: 0.9rem; color: var(--muted); }
+    pre { margin: 0.9rem 0 0; padding: 1rem; background: #eef1f7; border-radius: 6px; overflow-x: auto; font-size: 0.82rem; line-height: 1.55; white-space: pre; }
+    button { font-family: var(--sans); font-size: 0.85rem; font-weight: 500; margin-top: 0.75rem; padding: 0.35rem 0.9rem; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); border-radius: 6px; cursor: pointer; }
+    button:hover { background: var(--ink); color: #fff; }
+
+    .contact { margin-top: 5rem; }
+    .contact h2 { font-size: 1.5rem; font-weight: 600; }
+    .contact ul { list-style: none; padding: 0; margin: 1rem 0 0; font-family: var(--sans); font-size: 0.98rem; }
+    .contact li { margin-top: 0.35rem; }
+    footer { margin-top: 4rem; padding-top: 1.25rem; padding-bottom: 3rem; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 0.85rem; color: var(--muted); }
+
+    @media (max-width: 36rem) {
+      header { padding-top: 2.5rem; }
+      h1 { font-size: 2rem; }
+      body { font-size: 1rem; }
+      .sentence { font-size: 1.2rem; }
+      .readings { grid-template-columns: 1fr; gap: 1rem; }
+      .summary > div { grid-template-columns: 1fr; row-gap: 0.1rem; }
+      ol.steps > li { padding-left: 2.5rem; }
+      ol.steps > li::before { width: 1.7rem; height: 1.7rem; font-size: 0.8rem; }
+      ol.steps > li::after { left: 0.85rem; top: 2.1rem; }
+    }
+  </style>
+
 </head>
 <body>
-  <h1>Your Name</h1>
-  <p>Personal research portfolio.</p>
+  <header>
+    <h1>Luu Gia Huy</h1>
+    <p class="also">Publishes as Huy Gia Luu</p>
+    <p class="intro">I study how language models read what people mean rather than what they say, how LLM agents behave when they work together, and how far we can trust the evaluation of both. My work is organised in five threads. Each is a short story of questions and answers, with my own contribution to every study.</p>
+    <p class="affil">University of Information Technology, Vietnam National University Ho Chi Minh City</p>
+
+    <nav class="toc" aria-label="Research threads">
+      <h2>Five threads</h2>
+      <ol>
+        <li><a href="#isa"><span class="t">Implicit sentiment analysis</span><span class="q">Can a model read what a sentence means when its words say something else?</span><span class="n">4 papers</span></a></li>
+        <li><a href="#absa"><span class="t">Aspect-based sentiment analysis</span><span class="q">How do we get reliable, structured opinions out of LLMs in a low-resource language?</span><span class="n">2 papers</span></a></li>
+        <li><a href="#cls"><span class="t">Other text classification tasks</span><span class="q">How well do LLMs handle other classification tasks in Vietnamese?</span><span class="n">1 paper</span></a></li>
+        <li><a href="#agents"><span class="t">Agentic AI</span><span class="q">How do LLM agents behave when they work together, and how do we grade them?</span><span class="n">3 papers</span></a></li>
+        <li><a href="#eval"><span class="t">LLM evaluation</span><span class="q">Does the way we evaluate LLMs deserve the trust we place in it?</span><span class="n">1 paper</span></a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+    <section class="thread" id="isa" aria-labelledby="isa-h">
+      <h2 id="isa-h">Implicit sentiment analysis</h2>
+      <p class="question">Can a model read what a sentence means when its words say something else?</p>
+      <p class="story">The thread starts by measuring the problem in Vietnamese, where no benchmark existed. It then moves to English benchmarks and tries three answers in turn: teaching a small model to reason from distilled rationales, getting multi-step reasoning out of a single prompt, and redesigning the model around the errors that reasoning-based methods make.</p>
+
+<div class="reading">
+        <div class="example">
+          <p class="lang">Vietnamese</p>
+          <p class="sentence" lang="vi">Apple đúng là <span class="s">nhàm chán, dậm chân tại chỗ</span> mãi, <span class="m">tại chỗ top 1</span>.</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the words say</strong>Boring, stuck in place. Every polar word is negative.</div>
+            <div class="l-m"><strong>What the sentence means</strong>Stuck in place at number one. The label is Positive.</div>
+          </div>
+        </div>
+        <div class="example">
+          <p class="lang">English</p>
+          <p class="sentence" lang="en">After the latest software update, my phone has become an <span class="s">excellent</span> <span class="m">mini heater for winter</span>.</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the words say</strong>Praise. “Excellent” is the only polar word.</div>
+            <div class="l-m"><strong>What the sentence means</strong>A phone that works as a heater is overheating. The label is Negative.</div>
+          </div>
+        </div>
+        <p class="caption">Two sentences with implicit sentiment, one per language, both taken from my papers. A model that reads only the surface gets both wrong.</p>
+      </div>
+
+      <ol class="steps">
+<li>
+<article class="paper">
+<h3><a href="https://aclanthology.org/2025.inlg-main.14/">Exploring the Power of Large Language Models for Vietnamese Implicit Sentiment Analysis</a></h3>
+<p class="byline"><b>Huy Gia Luu</b> and Dang Van Thin. INLG 2025, the 18th International Natural Language Generation Conference, Hanoi, Vietnam. Pages 202–214.</p>
+<ul class="links">
+          <li><a href="https://aclanthology.org/2025.inlg-main.14/">ACL Anthology</a></li>
+          <li><a href="https://aclanthology.org/2025.inlg-main.14.pdf">PDF</a></li>
+          <li><a href="https://github.com/HuyGiaLuu/ViISA">Code and dataset</a></li>
+        </ul>
+<dl class="summary">
+<div><dt>Asks</dt><dd>How well do LLMs read implicit sentiment in Vietnamese, where no benchmark existed?</dd></div>
+<div><dt>Finds</dt><dd>They recover most of it but misread sarcasm and exaggeration, so precision is low. Few-shot Chain-of-Thought prompting works best, with Gemini-2.5-flash at 87.09% accuracy.</dd></div>
+<div><dt>My role</dt><dd>First author. Did the whole study.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>This paper introduces ViISA, the first benchmark for implicit sentiment analysis in Vietnamese. It contains 302 sentences from technology product reviews in which sentiment comes through sarcasm, exaggeration, irony, and contradiction instead of polar words. I used it to test 19 open-source and proprietary LLMs under five prompting strategies.</p>
+<p>Few-shot Chain-of-Thought prompting performs best. Gemini-2.5-flash reaches 87.09% accuracy and 78.48 macro-F1, and the best open-source model, Gemma-3-27B, reaches 79.47% accuracy. The models recover most Positive cases (recall 85.71) but only about half of their Positive predictions are correct (precision 52.17): they read sarcasm and hyperbole at face value. The error analysis traces this to missed exaggeration, confusion between main and background entities, and weak commonsense reasoning, and points to demonstrations built for Vietnamese pragmatics as the fix.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I carried out this study end to end.</p>
+        <ul>
+          <li>Defined the research question and the annotation guidelines, built around six indicators of implicit sentiment.</li>
+          <li>Built the dataset with a two-stage pipeline: a GPT-4o few-shot Chain-of-Thought filter over the VLSP 2016 reviews, followed by ten rounds of human annotation with inter-annotator agreement tracked throughout.</li>
+          <li>Implemented and ran zero-shot role-play, Plan-and-Solve, few-shot Chain-of-Thought, Active Prompting, and Self-Adaptive Prompting across all models.</li>
+          <li>Analysed the 36 false positives and 6 false negatives of the best system and derived the improvement directions.</li>
+          <li>Wrote the paper and released the dataset and code.</li>
+        </ul>
+<p class="note">Funded by VNU-HCM under grant number NCM2025-26-02.</p>
+</details>
+<details>
+          <summary>Cite this paper</summary>
+          <pre id="bibtex">@inproceedings{luu-thin-2025-exploring,
+    title = "Exploring the Power of Large Language Models for {V}ietnamese Implitcit Sentiment Analysis",
+    author = "Luu, Huy Gia  and
+      Thin, Dang Van",
+    editor = "Flek, Lucie  and
+      Narayan, Shashi  and
+      Phương, L{\^e} Hồng  and
+      Pei, Jiahuan",
+    booktitle = "Proceedings of the 18th International Natural Language Generation Conference",
+    month = oct,
+    year = "2025",
+    address = "Hanoi, Vietnam",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.inlg-main.14/",
+    pages = "202--214",
+}</pre>
+          <button type="button" id="copy-bib">Copy BibTeX</button>
+        </details>
+</article>
+</li>
+<li>
+<article class="paper">
+<h3>Investigating the Role of Reasoning Augmentation in Parameter-Efficient Fine-Tuning for Implicit Sentiment Analysis</h3>
+<p class="byline">Hoang Nguyen Minh*, <b>Huy Luu Gia</b>*, and Dang Van Thin. Accepted at ATAC 2026. *Co-first authors.</p>
+<ul class="links">
+          <li><a href="atac2026-isa-reasoning-peft.pdf">PDF</a></li>
+          <li><a href="https://github.com/UIT23520530/atac2026">Code and data</a></li>
+        </ul>
+<dl class="summary">
+<div><dt>Asks</dt><dd>Does reasoning distilled from GPT-4o help a small model fine-tuned for implicit sentiment?</dd></div>
+<div><dt>Finds</dt><dd>It depends on the domain. Reasoning adds a small gain on Restaurant overall but costs 5 points on implicit Laptop (81.14 to 76.00), where the teacher over-interprets factual specifications.</dd></div>
+<div><dt>My role</dt><dd>Co-first author. Idea, prompting experiments, and writing.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>This paper tests whether reasoning traces distilled from GPT-4o improve parameter-efficient fine-tuning for implicit sentiment analysis. Gemma-7B with LoRA, trained on the SemEval-2014 Restaurant and Laptop benchmarks, outperforms every prompt-based baseline (GPT-4o, GPT-4o Mini, and Gemini 2.0 Flash under zero-shot, few-shot, and Chain-of-Thought prompting) in all four evaluation settings. It matches or exceeds the Flan-T5-XXL direct fine-tuning and THOR baselines with a 7B model that updates under 1% of its parameters.</p>
+<p>The central finding is a domain dependency. Reasoning traces add a small gain on Restaurant overall accuracy (89.63 against 89.46), but they cost 5.14 points on the implicit Laptop subset (81.14 down to 76.00). On technical reviews the teacher over-interprets factual specifications, and the student then labels neutral statements as negative.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I am a co-first author of this paper.</p>
+        <ul>
+          <li>Conceived the research idea: test whether distilled reasoning helps parameter-efficient fine-tuning for implicit sentiment.</li>
+          <li>Ran the prompting experiments with LLMs, covering zero-shot, few-shot, and Chain-of-Thought prompting for GPT-4o, GPT-4o Mini, and Gemini 2.0 Flash on both domains.</li>
+          <li>Contributed to writing the paper.</li>
+        </ul>
+<p class="note">Funded by VNU-HCM under grant number C2026-26-10.</p>
+</details>
+</article>
+</li>
+<li>
+<article class="paper">
+<h3>Self-Reflective Contextual Reasoning: A Single-Turn Prompting Strategy for Implicit Sentiment Analysis</h3>
+<p class="byline">Under review at the Vietnam Journal of Computer Science.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>Can one prompt call get the benefit of multi-step reasoning without its cost?</dd></div>
+<div><dt>Finds</dt><dd>On GPT-4o it beats the strongest baseline by about 5.9 and 5.1 Macro-F1 points on implicit Laptop and Restaurant, runs faster than THOR (1,391 ms against 1,670 ms), and varies less between runs.</dd></div>
+<div><dt>My role</dt><dd>Idea, method, main experiments, and analyses.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>SCR is a single-turn prompting strategy for implicit sentiment analysis. The model writes its own domain knowledge once per domain, a retriever selects aspect-relevant exemplars for each query, and a fixed five-step reasoning procedure turns both into a prediction. Everything runs in one inference call with no fine-tuning, which removes the latency and error propagation of multi-step methods.</p>
+<p>On the English Laptop and Restaurant implicit-only test sets with GPT-4o, SCR improves Macro-F1 over the strongest baseline by about 5.9 and 5.1 points. It leads in most settings across GPT-4o, GPT-4o-mini, GPT-3.5-Turbo, and Gemma-3-4B-IT. Against the multi-step THOR baseline it is faster (1,391 ms against 1,670 ms per call) and more stable across runs (standard deviation 0.78 against 1.62).</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I proposed the research idea, designed the method, ran the main experiments, and carried out the analyses.</p>
+        <ul>
+          <li>Formulated the central idea: replace multi-step reasoning with one call that combines knowledge elicited from the model and a reasoning procedure designed by humans.</li>
+          <li>Designed every SCR component: self-reflective contextual prompting, dynamic exemplar retrieval with meta-annotated exemplars, domain-adaptive reasoning, a structured output format, and heuristic validation.</li>
+          <li>Ran the main experiments on two domains and four LLMs against zero-shot, few-shot, and THOR baselines.</li>
+          <li>Analysed component ablations, the scope and length cap of the reflection prompt (which cuts input tokens by about 65% at a 0.22-point cost), run-to-run stability, and latency and token cost.</li>
+        </ul>
+</details>
+</article>
+</li>
+<li>
+<article class="paper">
+<h3>Marker-Aligned Subspace Separation for Implicit Sentiment Analysis</h3>
+<p class="byline">Accepted at SOICT 2026, the International Symposium on Information and Communication Technology. Proceedings forthcoming.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>Why do reasoning-based methods fail on implicit sentiment, and can the model architecture fix it?</dd></div>
+<div><dt>Finds</dt><dd>THOR gives only 5 to 6.5% of its attention to the aspect term, and 84% of its errors sit at the Neutral-Polar boundary. MASS answers with aspect markers and separate subjectivity and polarity subspaces, gaining 4.46 accuracy points on implicit Restaurant.</dd></div>
+<div><dt>My role</dt><dd>Idea, method, main experiments, and analyses.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>MASS is a fine-tuning framework for implicit sentiment analysis that needs no LLM-generated training data. It wraps the target aspect in marker tokens, reads the encoder representation at the marker, and splits that vector into separate subjectivity and polarity subspaces. Prediction is hierarchical, Neutral or Polar first and then Positive or Negative, which reduces interference between the two objectives.</p>
+<p>With Flan-T5-Base on the Laptop and Restaurant benchmarks, MASS beats the strongest Flan-T5-Base baseline, MT-ISA, by 4.46 accuracy points on the implicit-only Restaurant test set and 1.10 on Laptop. With Flan-T5-XXL it reaches 81.88 and 85.16 Macro-F1 on the Restaurant and Laptop implicit subsets, ahead of LoRA-tuned Llama-3.1-8B and Qwen3-8B. McNemar tests with Bonferroni correction confirm significant gains over THOR and instruction-tuned Flan-T5 on Restaurant All, Restaurant ISA, and Laptop ISA. Removing the two-subspace decomposition costs 9.82 Macro-F1 points on Restaurant ISA.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I proposed the research idea, designed the method, ran the main experiments, and carried out the analyses.</p>
+        <ul>
+          <li>Diagnosed why prior reasoning-based methods fail: THOR gives only 5 to 6.5% of its attention to the aspect term, and 84% of its errors sit at the Neutral-Polar boundary. These two findings motivated the design.</li>
+          <li>Designed MASS: aspect markers, marker-position representation, subjectivity and polarity subspaces with hierarchical inference, an orthogonality regularizer, and class-weighted losses.</li>
+          <li>Ran the main experiments on two benchmarks with Flan-T5-Base and Flan-T5-XXL against prompting baselines, fine-tuned baselines, and LoRA-tuned 8B LLMs.</li>
+          <li>Analysed statistical significance, component ablations, marker-representation variants, aspect attention, and error distributions.</li>
+        </ul>
+</details>
+</article>
+</li>
+      </ol>
+    </section>
+
+    <section class="thread" id="absa" aria-labelledby="absa-h">
+      <h2 id="absa-h">Aspect-based sentiment analysis</h2>
+      <p class="question">How do we get reliable, structured opinions out of LLMs in a low-resource language?</p>
+      <p class="story">The first study changes the output format, asking the model for Python-style code instead of flat text. The second looks upstream at the data, asking whether LLM agents can produce the annotations such models are trained on.</p>
+
+<div class="reading">
+        <div class="example">
+          <p class="lang">Vietnamese</p>
+          <p class="sentence" lang="vi">rất thích sẽ ăn tiếp chỗ này</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the review says</strong>A positive remark about “chỗ này” (this place). The word “quán” (restaurant) never appears.</div>
+            <div class="l-m"><strong>What the model must extract</strong>Category RESTAURANT#GENERAL, sentiment Positive.</div>
+          </div>
+        </div>
+        <div class="example">
+          <p class="lang">English</p>
+          <p class="sentence" lang="en">All of the pizzas are terrific and the price is even better!</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the review says</strong>Two opinions in one sentence: the pizzas are terrific, and the price is even better.</div>
+            <div class="l-m"><strong>What the model must extract</strong>Two quadruples: food quality, pizzas, positive, terrific; restaurant prices, no aspect term, positive, even better.</div>
+          </div>
+        </div>
+        <p class="caption">Two reviews, one per language, both taken from the first paper below. ABSA turns each review into structured opinion tuples.</p>
+      </div>
+
+      <ol class="steps">
+<li>
+<article class="paper">
+<h3>Structured Code-Style Instruction Tuning for Vietnamese Aspect-Based Sentiment Analysis</h3>
+<p class="byline">Under review at a Springer journal.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>Does it help to ask an LLM for structured opinions as code instead of flat text?</dd></div>
+<div><dt>Finds</dt><dd>Yes. On three Vietnamese benchmarks the code template beats plain text in every aspect-category setting and gains 3.43 F1 on Vi-AbQSA, where Gemma-7B reaches 68.96.</dd></div>
+<div><dt>My role</dt><dd>Lead author. Did all of the work beyond the initial idea for the method.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>This paper reformulates Vietnamese ABSA as code generation. Each review is embedded in an executable Python-style function template, and the model resolves aspect category, aspect term, opinion term, and sentiment through a step-by-step programmatic reasoning chain instead of a flattened text sequence. Combined with LoRA instruction tuning, this mitigates the phrasing ambiguity and format drift of natural-language prompts.</p>
+<p>On three Vietnamese benchmarks (Restaurant and Hotel for aspect-category sentiment, and Vi-AbQSA for quadruple extraction) and five open-source backbones from 3B to 14B parameters, the code-style template beats the plain-text template in every aspect-category setting. On Vi-AbQSA, Gemma-7B reaches 68.96 F1, which is 3.43 points above plain text and 4.59 above the previous best baseline. On Restaurant and Hotel it reaches 78.36 and 78.02 F1, ahead of ViT5, HSUM-HC-8, and ensembles of BERT models, while GPT-4.1 with in-context prompting stays between 50 and 61 F1. The gain does not depend on the language of the template: Python, C++, and Java all reach about 78 F1. Diagnostic analyses show the code format shifts attention toward task-relevant anchors, cuts label entropy from 0.1606 to 0.0034, and smooths training. These analyses are observational.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I am the lead author of this paper. Beyond the initial idea for the method, I did all of the work.</p>
+        <ul>
+          <li>Designed and implemented the Python-style prompt templates for both the aspect-category and the quadruple-extraction tasks.</li>
+          <li>Ran all experiments: LoRA instruction tuning of five backbones on three benchmarks, GPT-4.1 prompting baselines, and comparisons across output formats and programming languages.</li>
+          <li>Carried out the error analysis and the diagnostic analyses of attention, entropy, training dynamics, and representation space.</li>
+          <li>Wrote the paper.</li>
+        </ul>
+</details>
+</article>
+</li>
+<li>
+<article class="paper">
+<h3>Retrieval-Augmented Multi-Agent System for Aspect Category Sentiment Analysis on Vietnamese Reviews</h3>
+<p class="byline">Manuscript in preparation.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>Can LLM agents annotate the training data that such models need?</dd></div>
+<div><dt>Finds</dt><dd>Their labels carry real signal: BiLSTM-CNN models trained on them keep 88 to 93% of gold-supervised F1. They do not replace human labels, and guideline quality and label noise are the limits.</dd></div>
+<div><dt>My role</dt><dd>Co-author. Idea, study design, and guidance of the team.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>This paper builds a retrieval-augmented multi-agent framework for guideline-constrained annotation of Vietnamese aspect-category sentiment. Two annotators label each review from shared retrieved guidelines and precedents, and every disagreement goes through debates with reversed speaking orders and a judge panel. The paper then tests how useful the resulting labels are as supervision.</p>
+<p>The answer is precise: multi-agent labels carry real signal but do not replace human gold labels. They agree with gold at 61.90 to 67.18% exact tuple-level F1. A BiLSTM-CNN trained on them retains 88.23 to 92.59% of its gold-supervised F1 across four benchmark conditions, and PhoBERT-CNN on Restaurant sentences retains 84.15%. Adding 3,000 multi-agent-labelled examples to gold data gives no reliable gain and degrades PhoBERT-CNN and Qwen2.5-7B. On disputed cases, debate and judging beat always keeping either annotator in all four test settings. Adapting a Restaurant guideline to Hotel cuts sentence-level F1 from 61.25% to 33.39%, which identifies guideline quality and label noise as the central constraints.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I am a co-author of this paper. I conceived the research idea, designed the study, and guided the team that carried it out.</p>
+        <ul>
+          <li>Conceived the idea of using retrieval-augmented multi-agent annotation for guideline-constrained Vietnamese ACSA.</li>
+          <li>Designed the study: the five-phase annotation framework and an evaluation protocol that covers agreement with gold labels, downstream supervision (multi-agent only and gold plus multi-agent), and cross-domain guideline adaptation.</li>
+          <li>Guided the team that implemented the framework and ran the experiments.</li>
+        </ul>
+</details>
+</article>
+</li>
+      </ol>
+    </section>
+
+    <section class="thread" id="cls" aria-labelledby="cls-h">
+      <h2 id="cls-h">Other text classification tasks</h2>
+      <p class="question">How well do LLMs handle other classification tasks in Vietnamese?</p>
+      <p class="story">This thread leaves sentiment for other classification problems. It starts by establishing a benchmark: how LLMs handle named entity recognition, a token-level classification task, under standard and task-specific prompting.</p>
+
+<div class="reading">
+        <div class="example">
+          <p class="lang">Vietnamese</p>
+          <p class="sentence" lang="vi">không thể đón taxi đi về <span class="s">miền nam</span> mà phải chuyển sang xe buýt</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the sentence says</strong>“Could not take a taxi to the south and had to switch to a bus.” “Miền nam” (the south) looks like a place name.</div>
+            <div class="l-m"><strong>What the model must decide</strong>Whether a general region counts as LOC. It does not: LOC is reserved for specific geographic entities.</div>
+          </div>
+        </div>
+        <div class="example">
+          <p class="lang">Vietnamese</p>
+          <p class="sentence" lang="vi">từ <span class="s">Bệnh viện Chợ Rẫy</span> chi viện phụ trách đơn nguyên hồi sức tích cực</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the sentence says</strong>“From Cho Ray Hospital, dispatched to lead the intensive care unit.” A hospital is also a physical place.</div>
+            <div class="l-m"><strong>What the model must decide</strong>Place or institution. It is an ORGANIZATION, because a hospital has personnel, structure, and regulations.</div>
+          </div>
+        </div>
+        <p class="caption">Two Vietnamese sentences from the error analysis of my paper. The best system, GPT-NER with DeepSeek-V3, gets both wrong.</p>
+      </div>
+
+      <ol class="steps">
+<li>
+<article class="paper">
+<h3>A Benchmark Evaluation of Named Entity Recognition with Large Language Models in Vietnamese</h3>
+<p class="byline">Accepted at ATAC 2026. Co-first authors.</p>
+<ul class="links">
+          <li><a href="atac2026-vietnamese-ner-benchmark.pdf">PDF</a></li>
+        </ul>
+<dl class="summary">
+<div><dt>Asks</dt><dd>How well do LLMs handle named entity recognition in Vietnamese, and which prompting works best?</dd></div>
+<div><dt>Finds</dt><dd>GPT-NER with DeepSeek-V3 is best, at 0.75 F1 on VLSP 2018 and 0.79 on COVID-19. Errors cluster where entity types blur, such as hospitals labelled as locations.</dd></div>
+<div><dt>My role</dt><dd>Co-first author. Idea, study design, and experiments.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>This paper establishes the first standardized benchmark for Vietnamese named entity recognition with LLMs. It evaluates ten open-source and proprietary models, including DeepSeek-V3, Qwen3, Gemma3, GPT-5, and GPT-4.1, under five prompting paradigms that range from zero-shot to task-specific structured prompting, on the VLSP 2018 and COVID-19 NER datasets with span-level seqeval scoring.</p>
+<p>Task-specific structured prompting wins. GPT-NER with DeepSeek-V3 reaches 0.75 F1 on VLSP 2018 and 0.79 on COVID-19, up from 0.66 and 0.70 for the same model with few-shot prompting. The effect is largest for open models: Gemma3-27B-it rises from 0.38 F1 under zero-shot prompting to 0.75 with GPT-NER on COVID-19. The errors concentrate where entity types are hard to tell apart: general regions labelled as locations, locations named after people labelled as persons, and institutions such as hospitals labelled as locations.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I am a co-first author of this paper. I conceived the research idea, designed the study, and ran the experiments.</p>
+        <ul>
+          <li>Conceived the idea of a standardized LLM benchmark for Vietnamese NER, a task for which no such benchmark existed.</li>
+          <li>Designed the study: the two datasets, the five prompting paradigms (general and NER-specific), the model suite, and the evaluation protocol.</li>
+          <li>Ran the experiments across the ten LLMs, five prompting methods, and two datasets.</li>
+        </ul>
+</details>
+</article>
+</li>
+      </ol>
+    </section>
+
+    <section class="thread" id="agents" aria-labelledby="agents-h">
+      <h2 id="agents-h">Agentic AI</h2>
+      <p class="question">How do LLM agents behave when they work together, and how do we grade them?</p>
+      <p class="story">The thread follows LLM agents from working together to being evaluated. The first study asks what a delegation order does to an executor that is otherwise capable. The next two turn to research agents that reproduce papers: first whether LLMs can write the rubrics that grade them, then how to grade what these agents actually do.</p>
+
+<div class="reading">
+        <div class="example">
+          <p class="lang">Default directive</p>
+          <p class="sentence" lang="en">Follow this plan precisely to calculate the final answer.</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the executor receives</strong>A plan for the problem of Janet’s ducks that silently changes 16 eggs a day to 18, followed by this order.</div>
+            <div class="l-m"><strong>What the executor does</strong>Reports $22, the answer the plan implies, instead of the correct $18. Strong executors adopted a premise alteration like this in 22.7 to 47.4% of the problems they solve unaided.</div>
+          </div>
+        </div>
+        <div class="example">
+          <p class="lang">Permissive wording</p>
+          <p class="sentence" lang="en">You may use this plan to help you calculate the final answer.</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the executor receives</strong>The same flawed plan, offered as help instead of ordered.</div>
+            <div class="l-m"><strong>What the executor does</strong>Usually notices the conflict with the problem and answers $18. Error adoption falls to 0.0 to 3.1% across the core conditions.</div>
+          </div>
+        </div>
+        <p class="caption">One delegation message with one planted error, taken from the first paper below. Only the last sentence changes.</p>
+      </div>
+
+      <ol class="steps">
+<li>
+<article class="paper">
+<h3>Follow Precisely: Plan Adherence Directives and Flawed-Plan Propagation in Multi-Agent Delegation</h3>
+<p class="byline">Under review at AAMAS 2027, the International Conference on Autonomous Agents and Multiagent Systems.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>When an agent delegates a plan, does an order to “follow precisely” make the executor inherit the plan’s errors?</dd></div>
+<div><dt>Finds</dt><dd>Yes, it is a primary driver. Removing the order cuts misled rates for strong executors from as high as 84% to below 9%, and a lightweight verification gate catches faulty plans.</dd></div>
+<div><dt>My role</dt><dd>Lead author. Did all of the work.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>In multi-agent LLM systems, the message that delegates a plan to an executor usually carries a directive such as “Follow this plan precisely.” This paper shows that the directive, more than the executor’s capability, drives error propagation: capable executors abandon their own correct reasoning and inherit planted errors from flawed plans, even on problems they solve correctly without a plan. Deployed frameworks such as AutoGen, CrewAI, and MetaGPT all contain this kind of mandatory plan-following language.</p>
+<p>Across 25 models from six families, premise alterations and operation inversions do the most damage, and neither model scale nor high baseline accuracy reliably protects: models above 90% zero-shot accuracy span misled rates from 2% to 90%. A matched ablation that deletes only the directive cuts misled rates for strong executors from as high as 84% to below 9%. A lightweight verification gate then intercepts faulty plans: a general verifier flags 94 to 100% of flaws at a 5 to 9% false-alarm rate, with no statistically significant accuracy loss on valid plans. The paper calls for replacing rigid “must-follow” imperatives with flexible delegation protocols that balance plan fidelity against independent verification.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I am the lead author of this paper and did all of the work.</p>
+        <ul>
+          <li>Formulated the research question: whether the delegation protocol, rather than executor capability, drives flawed-plan propagation.</li>
+          <li>Designed the study: five planted-error types, the misled-rate metric, the controlled directive ablation, and the verification defenses.</li>
+          <li>Built the benchmark and ran all experiments across 25 models from six families.</li>
+          <li>Carried out the analyses and wrote the paper.</li>
+        </ul>
+</details>
+</article>
+</li>
+<li>
+<article class="paper">
+<h3>Can LLMs Write Reliable Rubrics? A Meta-Evaluation for Experiment Reproduction</h3>
+<p class="byline">Accepted to Findings of AACL 2026. Proceedings forthcoming.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>Can LLMs write reliable rubrics for grading paper-reproduction agents?</dd></div>
+<div><dt>Finds</dt><dd>With augmentation their rubrics approach human ones (Pearson 0.74 to 0.80 against 0.83) but stay overly fine-grained and biased toward high scores.</dd></div>
+<div><dt>My role</dt><dd>Co-author. Some analyses and writing.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>Rubric-based evaluation is a promising way to assess research agents that reproduce papers as code, but paper-specific rubrics take expert effort to write: PaperBench covers only 20 papers. This paper presents the first systematic meta-evaluation of LLM-generated rubrics for paper reproduction. It recasts rubrics as checklists and tests four incrementally augmented generation settings: direct prompting, in-context examples, agentic scaffolding, and distilled procedural skills. Rubrics are judged intrinsically by their similarity to human-authored rubrics and extrinsically by how well the repository scores they induce match PaperBench evaluations.</p>
+<p>Augmentation substantially improves alignment where it matters. Direct prompting reaches Pearson correlations of 0.55 to 0.63 with PaperBench scores, and distilled skills lift them to 0.74 to 0.80, against 0.83 for human re-annotation. Intrinsic similarity improves more modestly and mainly through recall. The analysis also exposes the limits: generated rubrics are overly fine-grained and code-centric, biased toward high scores, and less adaptive to the priorities of each paper's domain.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I am a co-author of this paper. I helped write the paper and contributed to some of the analyses.</p>
+        <ul>
+          <li>Contributed to some of the analyses.</li>
+          <li>Helped write the paper.</li>
+        </ul>
+</details>
+</article>
+</li>
+<li>
+<article class="paper">
+<h3>Overview of the NLPCC 2026 Shared Task 11: Agent-Based Experiment Reproduction from Scientific Papers</h3>
+<p class="byline">Accepted at the NLPCC 2026 shared task track. Proceedings forthcoming.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>How do we grade reproduction agents on what they do, not only on what they produce?</dd></div>
+<div><dt>Finds</dt><dd>AgentActionBench scores logged agent actions against paper-specific rubrics on 150 papers. No participating system exceeds 50%, and execution is the bottleneck.</dd></div>
+<div><dt>My role</dt><dd>Co-author. Built the human annotation and helped write the paper.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>This paper introduces AgentActionBench, a process-oriented benchmark for agent-based experiment reproduction. Instead of scoring only the final repository, an MCP-based Action Recorder logs every read, write, and command an agent performs, and the logs are checked against paper-specific rubrics. The benchmark covers 150 papers: 120 from machine learning conferences and 30 from AI4Science journals in fields such as biology, chemistry, and materials science. The paper is the overview of the shared task built on it.</p>
+<p>A human-annotated subset covering 10% of the papers validates a scalable rubric-generation pipeline: model-generated rubrics correlate with human rubrics at 0.93 Pearson and 0.88 Spearman, which lets the benchmark grow to more than 10,000 rubric items. Current agents remain far from reliable reproduction. The best of the participating systems scores 49.64% overall and none exceeds 50%. Execution is the bottleneck: the best system obtains 82.45% on plan writing but only 18.04% on command execution and 17.24% on result matching.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I am a co-author of this paper. I built the human annotation and helped write the paper.</p>
+        <ul>
+          <li>Built the human annotation: the human-annotated subset of 15 papers (12 ML and 3 AI4Science) with more than 1,000 rubric items, annotated by three researchers with each rubric set cross-reviewed independently until consensus.</li>
+          <li>Provided the human reference that validates the rubric-generation pipeline and the scale-up to 150 papers.</li>
+          <li>Helped write the paper.</li>
+        </ul>
+</details>
+</article>
+</li>
+      </ol>
+    </section>
+
+    <section class="thread" id="eval" aria-labelledby="eval-h">
+      <h2 id="eval-h">LLM evaluation</h2>
+      <p class="question">Does the way we evaluate LLMs deserve the trust we place in it?</p>
+      <p class="story">This thread asks whether common evaluation practice earns its trust, especially in languages with little data. It begins with a standard safeguard, judging with a model from a different vendor, and asks what that safeguard actually establishes.</p>
+
+<div class="reading">
+        <div class="example">
+          <p class="lang">Vietnamese evaluation</p>
+          <p class="sentence" lang="en">Items from one vendor’s model, scored by judges from three other vendors, with high agreement.</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the design claims</strong>Three vendors, so the judges are independent and high agreement shows reliability.</div>
+            <div class="l-m"><strong>What the evidence supports</strong>Pipeline consistency only. No document shows where the judges learned Vietnamese, and no native speaker checked the scores.</div>
+          </div>
+        </div>
+        <div class="example">
+          <p class="lang">Any language</p>
+          <p class="sentence" lang="en">The judge comes from a different vendor than the generator.</p>
+          <div class="readings">
+            <div class="l-s"><strong>What the design claims</strong>No self-preference bias, so the judgment can be trusted.</div>
+            <div class="l-m"><strong>What the evidence supports</strong>The self-preference loop is cut, but vendor identity records who trained a model, not what data it learned from. The judges can still share blind spots.</div>
+          </div>
+        </div>
+        <p class="caption">Two designs that look independent, both taken from my paper. Vendor count calls both independent, and the evidence supports far less.</p>
+      </div>
+
+      <ol class="steps">
+<li>
+<article class="paper">
+<h3>Different Vendors Do Not Imply Independence: Provenance-Aware Multilingual LLM Evaluation</h3>
+<p class="byline">Under review at ACL Rolling Review, October 2026 cycle.</p>
+<dl class="summary">
+<div><dt>Asks</dt><dd>Does judging with a different vendor’s model make an evaluation independent?</dd></div>
+<div><dt>Finds</dt><dd>Not on its own. In 33 audited papers, 30.3% contain a generator-judge loop that vendor count cannot see, and only one reaches native-speaker grounding.</dd></div>
+<div><dt>My role</dt><dd>Did all of the work.</dd></div>
+</dl>
+<details>
+<summary>Details and my contribution</summary>
+<p>Multilingual evaluation increasingly uses LLMs as judges, and the standard safeguard against self-preference bias is to judge with a different vendor’s model. This paper shows that the safeguard is not evidence of independence: vendor identity records who trained a model, not what data it learned from, so a multi-vendor panel can still share blind spots. It introduces a framework that separates nominal vendor diversity from evidential independence (I0 to I3) and from external grounding (G0 to G2), built on six closed-loop conditions and a four-state scale for auditing target-language provenance, so that evaluation claims match the evidence behind them.</p>
+<p>Two audits apply the framework. Of 33 multilingual LLM-judge papers, 51.5% use a single vendor, 30.3% contain a generator-judge self-loop that vendor count cannot see, 42.4% score a model that also judges, and only one reaches blinded native-speaker grounding. Among 19 foundation model families, only two of the 15 LLM families commonly used in NLP research name their pretraining sources, so no audited paper reaches documented independence. The paper recommends reporting independence and grounding separately, labelling undocumented pipelines as unresolved, and anchoring evaluations in small, newly written native-speaker item sets.</p>
+<h4>My contribution</h4>
+        <p style="margin-top:0.25rem">I did all of the work on this paper.</p>
+        <ul>
+          <li>Developed the two-axis framework: six closed-loop conditions, a four-state provenance scale, and separate independence and grounding axes.</li>
+          <li>Designed and carried out the two audits, one of 33 multilingual LLM-judge papers and one of the training-data disclosure of 19 foundation model families.</li>
+          <li>Wrote the paper.</li>
+        </ul>
+</details>
+</article>
+</li>
+      </ol>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <ul>
+        <li><a href="mailto:23520618@gm.uit.edu.vn">23520618@gm.uit.edu.vn</a></li>
+        <li><a href="https://scholar.google.com/citations?user=lb0TLkYAAAAJ&amp;hl=en">Google Scholar</a></li>
+        <li><a href="https://github.com/HuyGiaLuu">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Luu Gia Huy. Last updated October 2026.
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('copy-bib');
+      var src = document.getElementById('bibtex');
+      if (!btn || !src) return;
+      btn.addEventListener('click', function () {
+        var text = src.textContent;
+        var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy BibTeX'; }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done);
+        } else {
+          var r = document.createRange(); r.selectNodeContents(src);
+          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          try { document.execCommand('copy'); done(); } catch (e) {}
+          s.removeAllRanges();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
