@@ -9,6 +9,7 @@ A portfolio presenting my research, including my publications and my specific co
 - Natural Language Processing (NLP)
 - Sentiment Analysis and Aspect-Based Sentiment Analysis (ABSA)
 - Evaluation and interpretability of Large Language Models (LLMs)
+- AI Agentic System
 
 ## Contents
 
