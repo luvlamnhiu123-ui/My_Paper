@@ -14,24 +14,24 @@ Going forward, I will keep doing research that improves performance on natural l
 ## Research Interests
 
 **Implicit sentiment analysis**
-- Understanding sentiment that is carried by context, sarcasm, or exaggeration instead of explicit polar words. This is hard for language models because the surface wording often points the opposite way from the intended meaning.
-- Built the first Vietnamese benchmark for implicit sentiment and showed where LLM prompting breaks down on it. Developed prompting, fine-tuning, and model-architecture methods that improve how models handle implicit cues.
+- **Overview:** Understanding sentiment that is carried by context, sarcasm, or exaggeration instead of explicit polar words. This is hard for language models because the surface wording often points the opposite way from the intended meaning.
+- **My work and results:** Built the first Vietnamese benchmark for implicit sentiment and showed where LLM prompting breaks down on it. Developed prompting, fine-tuning, and model-architecture methods that improve how models handle implicit cues.
 
 **Aspect-based sentiment analysis**
-- Extracting structured opinions, such as aspect categories, aspect terms, opinion terms, and polarities, from reviews. My focus is Vietnamese, where labelled data and annotation guidelines are limited.
-- Showed that framing opinion extraction as code generation improves results on Vietnamese benchmarks. Measured when LLM-generated annotations can stand in for human labels and where they fall short.
+- **Overview:** Extracting structured opinions, such as aspect categories, aspect terms, opinion terms, and polarities, from reviews. My focus is Vietnamese, where labelled data and annotation guidelines are limited.
+- **My work and results:** Showed that framing opinion extraction as code generation improves results on Vietnamese benchmarks. Measured when LLM-generated annotations can stand in for human labels and where they fall short.
 
 **Other text classification tasks**
-- Applying and benchmarking LLMs on other classification tasks in Vietnamese, starting with named entity recognition. The goal is to know which tasks LLMs already handle well and where they still need help.
-- Established the first standardized benchmark of LLMs for Vietnamese named entity recognition. Identified which prompting strategies work best and which entity types remain hard to tell apart.
+- **Overview:** Applying and benchmarking LLMs on other classification tasks in Vietnamese, starting with named entity recognition. The goal is to know which tasks LLMs already handle well and where they still need help.
+- **My work and results:** Established the first standardized benchmark of LLMs for Vietnamese named entity recognition. Identified which prompting strategies work best and which entity types remain hard to tell apart.
 
 **Agentic AI**
-- Studying how LLM agents delegate, coordinate, and reproduce scientific work, and how to grade them. This covers the protocols between agents and the benchmarks and rubrics that measure what they do.
-- Showed that strict delegation orders make capable agents inherit errors from flawed plans, and that a lightweight verification step catches most faulty plans. Contributed to benchmarks and rubrics for evaluating agents that reproduce research papers.
+- **Overview:** Studying how LLM agents delegate, coordinate, and reproduce scientific work, and how to grade them. This covers the protocols between agents and the benchmarks and rubrics that measure what they do.
+- **My work and results:** Showed that strict delegation orders make capable agents inherit errors from flawed plans, and that a lightweight verification step catches most faulty plans. Contributed to benchmarks and rubrics for evaluating agents that reproduce research papers.
 
 **LLM evaluation**
-- Examining whether the way we evaluate LLMs, especially with LLM judges in multilingual settings, deserves the trust placed in it. The question is what common safeguards actually establish about the independence and validity of a judgment.
-- Showed through audits of published practice that judges from different vendors do not guarantee independent evaluation. Proposed a framework that reports independence and grounding separately.
+- **Overview:** Examining whether the way we evaluate LLMs, especially with LLM judges in multilingual settings, deserves the trust placed in it. The question is what common safeguards actually establish about the independence and validity of a judgment.
+- **My work and results:** Showed through audits of published practice that judges from different vendors do not guarantee independent evaluation. Proposed a framework that reports independence and grounding separately.
 
 ## Education
 
