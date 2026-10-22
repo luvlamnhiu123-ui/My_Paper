@@ -40,6 +40,13 @@
     .affil { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); margin: 0.6rem 0 0; line-height: 1.5; }
     .intro { margin: 1.25rem 0 0; font-size: 0.98rem; line-height: 1.65; max-width: 38rem; }
 
+    .tally { margin: 0.9rem 0 0; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); }
+    ol.journey { list-style: none; margin: 1.75rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
+    ol.journey li { display: grid; grid-template-columns: 5rem 1fr; column-gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); max-width: 46rem; }
+    ol.journey .y { font-family: var(--sans); font-weight: 600; color: var(--meaning); }
+    .takeaway { margin: 2.5rem 0 0; padding: 0.2rem 0 0.2rem 1.1rem; border-left: 3px solid var(--meaning); max-width: 42rem; }
+    .takeaway strong { display: block; font-family: var(--sans); font-size: 0.92rem; color: var(--meaning); margin-bottom: 0.2rem; }
+    .affil a { color: inherit; }
     .toc { margin-top: 2rem; }
     .toc h2, .contact-side h2 { font-size: 1.05rem; font-weight: 600; }
     .toc ol { list-style: none; margin: 0.6rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
@@ -138,6 +145,7 @@
       .sentence { font-size: 1.2rem; }
       .readings { grid-template-columns: 1fr; gap: 1rem; }
       .summary > div { grid-template-columns: 1fr; row-gap: 0.1rem; }
+      ol.journey li { grid-template-columns: 1fr; row-gap: 0.1rem; }
       ol.steps > li { padding-left: 2.5rem; }
       ol.steps > li::before { width: 1.7rem; height: 1.7rem; font-size: 0.8rem; }
       ol.steps > li::after { left: 0.85rem; top: 2.1rem; }
@@ -152,16 +160,20 @@
         <h1>Luu Gia Huy</h1>
         <p class="also">Publishes as Huy Gia Luu</p>
         <p class="affil">University of Information Technology, Vietnam National University Ho Chi Minh City</p>
-        <p class="intro">I study how language models read what people mean rather than what they say, how LLM agents behave when they work together, and how far we can trust the evaluation of both. My work is organised in five threads. Each is a short story of questions and answers, with my own contribution to every study.</p>
+        <p class="affil">Undergraduate student, 2023 – 2027</p>
+        <p class="affil">Takes part in the UIT.NLP research group since 2024, working on sentiment analysis, and in <a href="https://chenghua-lin.github.io/">Prof. Chenghua Lin's lab</a> as a remote research intern since 2026, working on agentic AI.</p>
+        <p class="intro">I work on one problem from three sides: language models often give an answer that looks right but is not what the text means or what the evidence supports. I improve models on Vietnamese and English text, study how agents inherit each other's mistakes, and audit whether the evaluation of both deserves trust. The work is organised in five threads, with my own contribution to every study.</p>
+        <p class="tally">11 studies: 6 accepted or published, 4 under review, 1 in preparation.</p>
 
         <nav class="toc" aria-label="Research threads">
-          <h2>Five threads</h2>
+          <h2>Contents</h2>
           <ol>
         <li><a href="#isa"><span class="t">Implicit sentiment analysis</span><span class="q">Can a model read what a sentence means when its words say something else?</span><span class="n">4 papers</span></a></li>
         <li><a href="#absa"><span class="t">Aspect-based sentiment analysis</span><span class="q">How do we get reliable, structured opinions out of LLMs in a low-resource language?</span><span class="n">2 papers</span></a></li>
         <li><a href="#cls"><span class="t">Other text classification tasks</span><span class="q">How well do LLMs handle other classification tasks in Vietnamese?</span><span class="n">1 paper</span></a></li>
         <li><a href="#agents"><span class="t">Agentic AI</span><span class="q">How do LLM agents behave when they work together, and how do we grade them?</span><span class="n">3 papers</span></a></li>
         <li><a href="#eval"><span class="t">LLM evaluation</span><span class="q">Does the way we evaluate LLMs deserve the trust we place in it?</span><span class="n">1 paper</span></a></li>
+        <li><a href="#journey"><span class="t">Research journey</span><span class="q">How the work unfolded, from my first year at UIT to now.</span><span class="n">2023 – 2026</span></a></li>
           </ol>
         </nav>
 
@@ -300,7 +312,7 @@
 <dl class="summary">
 <div><dt>Asks</dt><dd>Can one prompt call get the benefit of multi-step reasoning without its cost?</dd></div>
 <div><dt>Finds</dt><dd>On GPT-4o it beats the strongest baseline by about 5.9 and 5.1 Macro-F1 points on implicit Laptop and Restaurant, runs faster than THOR (1,391 ms against 1,670 ms), and varies less between runs.</dd></div>
-<div><dt>My role</dt><dd>Idea, method, main experiments, and analyses.</dd></div>
+<div><dt>My role</dt><dd>First author. Idea, method, main experiments, and analyses.</dd></div>
 </dl>
 <details>
 <summary>Details and my contribution</summary>
@@ -328,7 +340,7 @@
 <dl class="summary">
 <div><dt>Asks</dt><dd>Why do reasoning-based methods fail on implicit sentiment, and can the model architecture fix it?</dd></div>
 <div><dt>Finds</dt><dd>THOR gives only 5 to 6.5% of its attention to the aspect term, and 84% of its errors sit at the Neutral-Polar boundary. MASS answers with aspect markers and separate subjectivity and polarity subspaces, gaining 4.46 accuracy points on implicit Restaurant.</dd></div>
-<div><dt>My role</dt><dd>Idea, method, main experiments, and analyses.</dd></div>
+<div><dt>My role</dt><dd>First author. Idea, method, main experiments, and analyses.</dd></div>
 </dl>
 <details>
 <summary>Details and my contribution</summary>
@@ -347,6 +359,7 @@
 </article>
 </li>
       </ol>
+      <p class="takeaway"><strong>What I took away</strong>Adding reasoning helps only where the errors are about meaning. Where they are about structure, such as aspect focus and the Neutral-Polar boundary, fixing the model works better than adding more reasoning.</p>
     </section>
 
     <section class="thread" id="absa" aria-labelledby="absa-h">
@@ -385,7 +398,7 @@
 <dl class="summary">
 <div><dt>Asks</dt><dd>Does it help to ask an LLM for structured opinions as code instead of flat text?</dd></div>
 <div><dt>Finds</dt><dd>Yes. On three Vietnamese benchmarks the code template beats plain text in every aspect-category setting and gains 3.43 F1 on Vi-AbQSA, where Gemma-7B reaches 68.96.</dd></div>
-<div><dt>My role</dt><dd>Lead author. Did all of the work beyond the initial idea for the method.</dd></div>
+<div><dt>My role</dt><dd>First author. Did all of the work beyond the initial idea for the method.</dd></div>
 </dl>
 <details>
 <summary>Details and my contribution</summary>
@@ -431,12 +444,13 @@
 </article>
 </li>
       </ol>
+      <p class="takeaway"><strong>What I took away</strong>Output format and data quality matter as much as the model. The same LLM does better when its output is structured as code, and noisy agent labels cap what a downstream model can learn.</p>
     </section>
 
     <section class="thread" id="cls" aria-labelledby="cls-h">
       <h2 id="cls-h">Other text classification tasks</h2>
       <p class="question">How well do LLMs handle other classification tasks in Vietnamese?</p>
-      <p class="story">This thread leaves sentiment for other classification problems. It starts by establishing a benchmark: how LLMs handle named entity recognition, a token-level classification task, under standard and task-specific prompting.</p>
+      <p class="story">This thread leaves sentiment for other classification problems. It starts by establishing a benchmark: how LLMs handle named entity recognition, a token-level classification task, under standard and task-specific prompting. The research in this thread is ongoing, and more studies are under way.</p>
 
 <div class="reading">
         <div class="example">
@@ -490,6 +504,7 @@
 </article>
 </li>
       </ol>
+      <p class="takeaway"><strong>What I took away</strong>Prompt design matters a great deal. The same model gains up to 0.37 F1 under a task-specific prompting method.</p>
     </section>
 
     <section class="thread" id="agents" aria-labelledby="agents-h">
@@ -528,7 +543,7 @@
 <dl class="summary">
 <div><dt>Asks</dt><dd>When an agent delegates a plan, does an order to “follow precisely” make the executor inherit the plan’s errors?</dd></div>
 <div><dt>Finds</dt><dd>Yes, it is a primary driver. Removing the order cuts misled rates for strong executors from as high as 84% to below 9%, and a lightweight verification gate catches faulty plans.</dd></div>
-<div><dt>My role</dt><dd>Lead author. Did all of the work.</dd></div>
+<div><dt>My role</dt><dd>First author. Did all of the work.</dd></div>
 </dl>
 <details>
 <summary>Details and my contribution</summary>
@@ -600,6 +615,7 @@
 </article>
 </li>
       </ol>
+      <p class="takeaway"><strong>What I took away</strong>Capability does not protect an agent from a bad plan. The protocol around it does. Grading such agents carries the same lesson: rubrics and benchmarks must themselves be validated against human judgment.</p>
     </section>
 
     <section class="thread" id="eval" aria-labelledby="eval-h">
@@ -638,7 +654,7 @@
 <dl class="summary">
 <div><dt>Asks</dt><dd>Does judging with a different vendor’s model make an evaluation independent?</dd></div>
 <div><dt>Finds</dt><dd>Not on its own. In 33 audited papers, 30.3% contain a generator-judge loop that vendor count cannot see, and only one reaches native-speaker grounding.</dd></div>
-<div><dt>My role</dt><dd>Did all of the work.</dd></div>
+<div><dt>My role</dt><dd>First author. Did all of the work.</dd></div>
 </dl>
 <details>
 <summary>Details and my contribution</summary>
@@ -655,6 +671,19 @@
 </div>
 </article>
 </li>
+      </ol>
+      <p class="takeaway"><strong>What I took away</strong>A safeguard that looks independent is not evidence of independence. An evaluation claim should be only as strong as the provenance and grounding behind it.</p>
+    </section>
+
+    <section class="thread" id="journey" aria-labelledby="journey-h">
+      <h2 id="journey-h">Research journey</h2>
+      <p class="story">How the work above unfolded, from my first year at UIT to now.</p>
+      <ol class="journey">
+        <li><span class="y">2023</span><span class="d">Started the undergraduate program in Computer Science at the University of Information Technology.</span></li>
+        <li><span class="y">2024</span><span class="d">Began taking part in the UIT.NLP research group, working on sentiment analysis in Vietnamese and English.</span></li>
+        <li><span class="y">2025</span><span class="d">Published my first paper, the first Vietnamese benchmark for implicit sentiment, at INLG 2025 in Hanoi.</span></li>
+        <li><span class="y">2026</span><span class="d">Started a remote research internship in Prof. Chenghua Lin's lab on agentic AI for reproducing scientific research. Had work accepted at ATAC, SOICT, Findings of AACL, and the NLPCC shared task, and began reviewing for the NLPCC 2026 shared task.</span></li>
+        <li><span class="y">Now</span><span class="d">Four studies under review and one in preparation. The research continues in every thread.</span></li>
       </ol>
     </section>
 
