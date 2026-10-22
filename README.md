@@ -19,7 +19,7 @@ Going forward, I will keep doing research that improves performance on natural l
 
 **Aspect-based sentiment analysis**
 - **Overview:** Extracting structured opinions, such as aspect categories, aspect terms, opinion terms, and polarities, from reviews. My focus is Vietnamese, where labelled data and annotation guidelines are limited.
-- **My work and results:** Showed that framing opinion extraction as code generation improves results on Vietnamese benchmarks. Measured when LLM-generated annotations can stand in for human labels and where they fall short.
+- **My work and results:** Showed that framing opinion extraction as code generation improves results on Vietnamese benchmarks. Measured how far LLM-generated annotations can stand in for human labels, and where they fall short.
 
 **Other text classification tasks**
 - **Overview:** Applying and benchmarking LLMs on other classification tasks in Vietnamese, starting with named entity recognition. The goal is to know which tasks LLMs already handle well and where they still need help.

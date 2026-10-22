@@ -235,7 +235,7 @@
 <details>
 <summary>Details and my contribution</summary>
 <p>This paper introduces ViISA, the first benchmark for implicit sentiment analysis in Vietnamese. It contains 302 sentences from technology product reviews in which sentiment comes through sarcasm, exaggeration, irony, and contradiction instead of polar words. I used it to test 19 open-source and proprietary LLMs under five prompting strategies.</p>
-<p>Few-shot Chain-of-Thought prompting performs best. Gemini-2.5-flash reaches 87.09% accuracy and 78.48 macro-F1, and the best open-source model, Gemma-3-27B, reaches 79.47% accuracy. The models recover most Positive cases (recall 85.71) but only about half of their Positive predictions are correct (precision 52.17): they read sarcasm and hyperbole at face value. The error analysis traces this to missed exaggeration, confusion between main and background entities, and weak commonsense reasoning, and points to demonstrations built for Vietnamese pragmatics as the fix.</p>
+<p>Few-shot Chain-of-Thought prompting performs best. Gemini-2.5-flash reaches 87.09% accuracy and 78.48 macro-F1, and the best open-source model, Gemma-3-27B, reaches 79.47% accuracy. The best system, Gemini-2.5-flash with few-shot Chain-of-Thought, recovers most Positive cases (recall 85.71) but only about half of its Positive predictions are correct (precision 52.17): it reads sarcasm and hyperbole at face value. The error analysis traces this to missed exaggeration, confusion between main and background entities, and weak commonsense reasoning, and points to demonstrations built for Vietnamese pragmatics as the fix.</p>
 <h4>My contribution</h4>
         <p style="margin-top:0.25rem">I carried out this study end to end.</p>
         <ul>
@@ -288,7 +288,7 @@
 </dl>
 <details>
 <summary>Details and my contribution</summary>
-<p>This paper tests whether reasoning traces distilled from GPT-4o improve parameter-efficient fine-tuning for implicit sentiment analysis. Gemma-7B with LoRA, trained on the SemEval-2014 Restaurant and Laptop benchmarks, outperforms every prompt-based baseline (GPT-4o, GPT-4o Mini, and Gemini 2.0 Flash under zero-shot, few-shot, and Chain-of-Thought prompting) in all four evaluation settings. It matches or exceeds the Flan-T5-XXL direct fine-tuning and THOR baselines with a 7B model that updates under 1% of its parameters.</p>
+<p>This paper tests whether reasoning traces distilled from GPT-4o improve parameter-efficient fine-tuning for implicit sentiment analysis. Gemma-7B with LoRA, trained on the SemEval-2014 Restaurant and Laptop benchmarks, outperforms every prompt-based baseline (GPT-4o, GPT-4o Mini, and Gemini 2.0 Flash under zero-shot, few-shot, and Chain-of-Thought prompting) in all four evaluation settings. In its standard LoRA form it matches or exceeds the Flan-T5-XXL direct fine-tuning and THOR baselines with a 7B model that updates under 1% of its parameters.</p>
 <p>The central finding is a domain dependency. Reasoning traces add a small gain on Restaurant overall accuracy (89.63 against 89.46), but they cost 5.14 points on the implicit Laptop subset (81.14 down to 76.00). On technical reviews the teacher over-interprets factual specifications, and the student then labels neutral statements as negative.</p>
 <h4>My contribution</h4>
         <p style="margin-top:0.25rem">I am a co-first author of this paper.</p>
@@ -316,7 +316,7 @@
 </dl>
 <details>
 <summary>Details and my contribution</summary>
-<p>SCR is a single-turn prompting strategy for implicit sentiment analysis. The model writes its own domain knowledge once per domain, a retriever selects aspect-relevant exemplars for each query, and a fixed five-step reasoning procedure turns both into a prediction. Everything runs in one inference call with no fine-tuning, which removes the latency and error propagation of multi-step methods.</p>
+<p>SCR is a single-turn prompting strategy for implicit sentiment analysis. The model writes its own domain knowledge once per domain, a retriever selects aspect-relevant exemplars for each query, and a fixed five-step reasoning procedure turns both into a prediction. Everything runs in one inference call with no fine-tuning, which reduces the latency and error-propagation risks of multi-step methods.</p>
 <p>On the English Laptop and Restaurant implicit-only test sets with GPT-4o, SCR improves Macro-F1 over the strongest baseline by about 5.9 and 5.1 points. It leads in most settings across GPT-4o, GPT-4o-mini, GPT-3.5-Turbo, and Gemma-3-4B-IT. Against the multi-step THOR baseline it is faster (1,391 ms against 1,670 ms per call) and more stable across runs (standard deviation 0.78 against 1.62).</p>
 <h4>My contribution</h4>
         <p style="margin-top:0.25rem">I am a first author. I proposed the research idea, designed the method, ran the main experiments, and carried out the analyses.</p>
@@ -397,18 +397,18 @@
 <div class="body">
 <dl class="summary">
 <div><dt>Asks</dt><dd>Does it help to ask an LLM for structured opinions as code instead of flat text?</dd></div>
-<div><dt>Finds</dt><dd>Yes. On three Vietnamese benchmarks the code template beats plain text in every aspect-category setting and gains 3.43 F1 on Vi-AbQSA, where Gemma-7B reaches 68.96.</dd></div>
+<div><dt>Finds</dt><dd>Yes. On three Vietnamese benchmarks the code template beats plain text in every aspect-category setting and gains up to 3.43 F1 on Vi-AbQSA, where Gemma-7B reaches 68.96.</dd></div>
 <div><dt>My role</dt><dd>First author. Did all of the work beyond the initial idea for the method.</dd></div>
 </dl>
 <details>
 <summary>Details and my contribution</summary>
 <p>This paper reformulates Vietnamese ABSA as code generation. Each review is embedded in an executable Python-style function template, and the model resolves aspect category, aspect term, opinion term, and sentiment through a step-by-step programmatic reasoning chain instead of a flattened text sequence. Combined with LoRA instruction tuning, this mitigates the phrasing ambiguity and format drift of natural-language prompts.</p>
-<p>On three Vietnamese benchmarks (Restaurant and Hotel for aspect-category sentiment, and Vi-AbQSA for quadruple extraction) and five open-source backbones from 3B to 14B parameters, the code-style template beats the plain-text template in every aspect-category setting. On Vi-AbQSA, Gemma-7B reaches 68.96 F1, which is 3.43 points above plain text and 4.59 above the previous best baseline. On Restaurant and Hotel it reaches 78.36 and 78.02 F1, ahead of ViT5, HSUM-HC-8, and ensembles of BERT models, while GPT-4.1 with in-context prompting stays between 50 and 61 F1. The gain does not depend on the language of the template: Python, C++, and Java all reach about 78 F1. Diagnostic analyses show the code format shifts attention toward task-relevant anchors, cuts label entropy from 0.1606 to 0.0034, and smooths training. These analyses are observational.</p>
+<p>On three Vietnamese benchmarks (Restaurant and Hotel for aspect-category sentiment, and Vi-AbQSA for quadruple extraction), the code-style template beats the plain-text template in every aspect-category setting, tested on five open-source backbones from 3B to 14B parameters. On Vi-AbQSA, tested on three 7B backbones, Gemma-7B reaches 68.96 F1, which is 3.43 points above plain text and 4.59 above the previous best baseline, while the other two backbones gain under half a point. On Restaurant and Hotel it reaches 78.36 and 78.02 F1, ahead of ViT5, HSUM-HC-8, and ensembles of BERT models, while GPT-4.1 prompted without fine-tuning stays between 42 and 61 F1. The gain does not depend on the language of the template: Python, C++, and Java all reach about 78 F1. Diagnostic analyses show the code format shifts attention toward task-relevant anchors, cuts label entropy from 0.1606 to 0.0034, and smooths training. These analyses are observational.</p>
 <h4>My contribution</h4>
         <p style="margin-top:0.25rem">I am a first author of this paper. Beyond the initial idea for the method, I did all of the work.</p>
         <ul>
           <li>Designed and implemented the Python-style prompt templates for both the aspect-category and the quadruple-extraction tasks.</li>
-          <li>Ran all experiments: LoRA instruction tuning of five backbones on three benchmarks, GPT-4.1 prompting baselines, and comparisons across output formats and programming languages.</li>
+          <li>Ran all experiments: LoRA instruction tuning of five backbones on the aspect-category benchmarks and three on Vi-AbQSA, GPT-4.1 prompting baselines, and comparisons across output formats and programming languages.</li>
           <li>Carried out the error analysis and the diagnostic analyses of attention, entropy, training dynamics, and representation space.</li>
           <li>Wrote the paper.</li>
         </ul>
@@ -425,13 +425,13 @@
 <div class="body">
 <dl class="summary">
 <div><dt>Asks</dt><dd>Can LLM agents annotate the training data that such models need?</dd></div>
-<div><dt>Finds</dt><dd>Their labels carry real signal: BiLSTM-CNN models trained on them keep 88 to 93% of gold-supervised F1. They do not replace human labels, and guideline quality and label noise are the limits.</dd></div>
+<div><dt>Finds</dt><dd>Their labels are useful but imperfect: models trained on them keep about 84 to 93% of gold-supervised F1. They are not an equivalent substitute for human gold labels, adding them to gold data does not help, and guideline quality and label noise are the limits.</dd></div>
 <div><dt>My role</dt><dd>Co-author. Idea, study design, and guidance of the team.</dd></div>
 </dl>
 <details>
 <summary>Details and my contribution</summary>
 <p>This paper builds a retrieval-augmented multi-agent framework for guideline-constrained annotation of Vietnamese aspect-category sentiment. Two annotators label each review from shared retrieved guidelines and precedents, and every disagreement goes through debates with reversed speaking orders and a judge panel. The paper then tests how useful the resulting labels are as supervision.</p>
-<p>The answer is precise: multi-agent labels carry real signal but do not replace human gold labels. They agree with gold at 61.90 to 67.18% exact tuple-level F1. A BiLSTM-CNN trained on them retains 88.23 to 92.59% of its gold-supervised F1 across four benchmark conditions, and PhoBERT-CNN on Restaurant sentences retains 84.15%. Adding 3,000 multi-agent-labelled examples to gold data gives no reliable gain and degrades PhoBERT-CNN and Qwen2.5-7B. On disputed cases, debate and judging beat always keeping either annotator in all four test settings. Adapting a Restaurant guideline to Hotel cuts sentence-level F1 from 61.25% to 33.39%, which identifies guideline quality and label noise as the central constraints.</p>
+<p>The paper characterizes the labels as informative but imperfect supervision: they contain substantial task signal but are not an equivalent substitute for human gold labels. They agree with gold at 61.90 to 67.18% exact tuple-level F1. A BiLSTM-CNN trained on them retains 88.23 to 92.59% of its gold-supervised F1 across four benchmark conditions, and PhoBERT-CNN on Restaurant sentences retains 84.15%. Adding 3,000 multi-agent-labelled examples to gold data gives no reliable gain and degrades PhoBERT-CNN and Qwen2.5-7B. On disputed cases, debate and judging beat always keeping either annotator in all four test settings. Adapting a Restaurant guideline to Hotel cuts sentence-level F1 from 61.25% to 33.39%, which identifies guideline quality and label noise as the central constraints.</p>
 <h4>My contribution</h4>
         <p style="margin-top:0.25rem">I am a co-author of this paper. I conceived the research idea, designed the study, and guided the team that carried it out.</p>
         <ul>
@@ -444,7 +444,7 @@
 </article>
 </li>
       </ol>
-      <p class="takeaway"><strong>What I took away</strong>Output format and data quality matter as much as the model. The same LLM does better when its output is structured as code, and noisy agent labels cap what a downstream model can learn.</p>
+      <p class="takeaway"><strong>What I took away</strong>Output format and data quality matter as much as the model. The same LLM does better when its output is structured as code, and label noise limits what a downstream model can learn from agent annotations.</p>
     </section>
 
     <section class="thread" id="cls" aria-labelledby="cls-h">
