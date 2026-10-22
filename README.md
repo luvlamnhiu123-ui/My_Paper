@@ -48,7 +48,7 @@ My publications, manuscripts under review, and my specific contribution to each 
 
 ## Research Experience
 
-**Student Participant, UIT.NLP Research Group**, University of Information Technology, VNU-HCM · 2024 – present
+**Student Researcher, UIT.NLP Research Group**, University of Information Technology, VNU-HCM · 2024 – present
 Led by [Assoc. Prof. Ngan Luu-Thuy Nguyen](https://scholar.google.com/citations?user=VoTCbXYAAAAJ&hl=en), under the supervision of [Dr. Dang Van Thin](https://scholar.google.com/citations?user=5WKo838AAAAJ&hl=en).
 - Take part in research on improving the performance of sentiment analysis in both Vietnamese and English.
 
